@@ -15,11 +15,7 @@ onMounted(async () => {
     
     // Pegamos a receita pelo índice numérico
     recipe.value = data[parseInt(recipeId)]
-    
-    // Adicionamos a imagem fake caso precise
-    if(recipe.value) {
-        recipe.value.imagem = 'https://images.unsplash.com/photo-1543353071-87d8928d8a3d?q=80&w=600&auto=format&fit=crop'
-    }
+
 
   } catch (error) {
     console.error(error)
@@ -34,7 +30,7 @@ onMounted(async () => {
   
   <div v-else-if="recipe" class="detail-container">
     <h1>{{ recipe.nome }}</h1>
-    <img :src="recipe.imagem" class="detail-img" />
+
 
     <div class="ingredients">
       <h3>Ingredientes</h3>
@@ -65,7 +61,7 @@ onMounted(async () => {
 <style scoped>
 .detail-container { max-width: 800px; margin: 0 auto; padding-bottom: 50px; }
 .detail-img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
-.step-section { margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+.step-section { margin-bottom: 20px; background: #2a5c50; padding: 15px; border-radius: 8px; }
 .step-section h4 { margin-top: 0; color: #42b983; }
 .btn-back { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #666; color: white; text-decoration: none; border-radius: 5px; }
 </style>

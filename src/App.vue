@@ -4,7 +4,7 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/" class="logo">🥗 VeggieDex 🥗</RouterLink>
+      <RouterLink to="/" class="logo">🥗 BrasiDex 🥗</RouterLink>
     </nav>
   </header>
 
@@ -15,14 +15,14 @@
 
 <style scoped>
 header {
-  background: #49b794;
+  background: #49b190;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: rgb(34, 70, 72);
   text-decoration: none;
 }
 main {

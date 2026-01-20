@@ -17,9 +17,7 @@ const fetchRecipes = async () => {
     recipes.value = data.map((recipe, index) => ({
       ...recipe,
       id: index.toString(), // Cria um ID baseado na posição
-      // Como esse JSON não tem fotos, vamos usar uma imagem padrão bonita
-      imagem: 'https://images.unsplash.com/photo-1543353071-87d8928d8a3d?q=80&w=600&auto=format&fit=crop' 
-    }))
+      }))
   } catch (error) {
     console.error("Erro ao carregar receitas:", error)
   } finally {
@@ -31,14 +29,14 @@ const fetchRecipes = async () => {
 const filteredRecipes = computed(() => {
   let result = recipes.value
   
-  // 1. Filtrar por nome
+  // Filtrar por nome
   if (searchTerm.value) {
     result = result.filter(recipe => 
       recipe.nome.toLowerCase().includes(searchTerm.value.toLowerCase())
     )
   }
   
-  // 2. Pegar apenas os primeiros X itens (paginação infinita seria o ideal, mas isso resolve)
+  // Pegar apenas os primeiros X itens
   return result.slice(0, ITEMS_PER_PAGE * currentPage.value)
 })
 
@@ -53,7 +51,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <h1>Receitas Brasileiras ({{ recipes.length }}) 🇧🇷</h1>
+    <h2>Receitas Brasileiras ({{ recipes.length }})</h2>
     
     <input 
       v-model="searchTerm" 
@@ -66,7 +64,6 @@ onMounted(() => {
     <div v-else>
       <div class="recipe-grid">
         <div v-for="recipe in filteredRecipes" :key="recipe.id" class="card">
-          <img :src="recipe.imagem" alt="Prato" />
           <h3>{{ recipe.nome }}</h3>
           <p class="category">Ver detalhes para ingredientes</p>
           <RouterLink :to="`/recipe/${recipe.id}`" class="btn-details">
